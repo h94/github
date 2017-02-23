@@ -1,0 +1,94 @@
+<md-sidenav ng-if="enableNav" md-component-id="leftnav" class="md-sidenav-left md-whiteframe-z2" flex-sm="60" flex-gt-sm="40"> 
+	<!--md-is-locked-open="$mdMedia('')"-->
+	<div layout="column" layout-fill>
+		<!--上層資訊列-->
+		<md-toolbar class="md-primary md-hue-3" layout="column" style="min-height: 75px">
+			<div layout="column">
+				<div class="member" layout="row">
+					<i class="material-icons">face</i>
+					<t>帳戶名稱:</t>
+					<t class="t-yellow" ng-bind="::memberData.username"></t>
+				</div>
+				<div class="member" layout="row" layout-align="start center">
+					<i class="material-icons">attach_money</i>
+					<span flex="45">
+						<t ng-bind="::today|date:'yyyy-MM-dd'"></t>
+						<t>額度:</t>
+					</span>
+					<t class="t-yellow" ng-bind="memberData.maxcredit|number"></t>
+					<t> (元)</t>
+				</div>
+				<div class="member" layout="row" layout-align="start center">
+					<i class="material-icons">attach_money</i>
+					<span flex="45">
+						<t ng-bind="::yesterday|date:'yyyy-MM-dd'"></t>
+						<t>額度:</t>
+					</span>
+					<t class="t-yellow" ng-bind="memberData.maxcredit1|number"></t>
+					<t> (元)</t>
+				</div>
+			</div>
+		</md-toolbar>
+		<!--導航內容-->
+		<md-content >
+			<md-list>
+				<md-list-item md-ink-ripple ng-click="changeState('index')">
+					<md-icon>assistant_photo</md-icon>
+					<p>所有賽事</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="changeState('favorite')">
+					<md-icon>favorite</md-icon>
+					<p>我的最愛</p>
+					<p class="md-secondary" ng-bind="favorcount"></p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="changeState('marquee')">
+					<md-icon>assignment</md-icon>
+					<p>歷史公告</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="changeState('userdata')">
+					<md-icon>person</md-icon>
+					<p>會員資料</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="changeState('history')">
+					<md-icon>assessment</md-icon>
+					<p>帳戶歷史</p>
+				</md-list-item>
+				<md-list-item ng-if="topbutton[2]" md-ink-ripple ng-click="changeState('gamehistory')">
+					<md-icon>assessment</md-icon>
+					<p>遊戲館帳戶歷史</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="changeState('orderlist')">
+					<md-icon>description</md-icon>
+					<p>下注狀況</p>
+					<p class="md-secondary" ng-bind="betnum"></p>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item ng-if="topbutton[0]" md-ink-ripple ng-click="openLink('game')">
+					<md-icon>videogame_asset</md-icon>
+					<p>真人</p>
+				</md-list-item>
+				<md-list-item ng-if="topbutton[1]" md-ink-ripple ng-click="openLink('tc')">
+					<md-icon>videogame_asset</md-icon>
+					<p>TC老虎機</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="openLink('video')">
+					<md-icon>tv</md-icon>
+					<p>影音廣場</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="openLink('live')">
+					<md-icon>tv</md-icon>
+					<p>直播</p>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-list-item md-ink-ripple ng-click="report()">
+					<md-icon>report_problem</md-icon>
+					<p>問題反應</p>
+				</md-list-item>
+				<md-list-item md-ink-ripple ng-click="logout()">
+					<md-icon>power_settings_new</md-icon>
+					<p>登出</p>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+</md-sidenav>
